@@ -46,3 +46,9 @@ def process_results(new_list):
         category = new_item.get('news_category')
         language = new_item.get('language')
         country = new_item.get('country')
+
+        if description:
+            new_object = New(id,name,description,category,language,country)
+            new_results.append(new_object)
+
+return new_results

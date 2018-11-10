@@ -7,7 +7,6 @@ class New:
         self.id = id
         self.name = name
         self.description = description
-        # self. url = 'https://abcnews.go.com'
         self.category = category
         self.language = language
         self.country = country
