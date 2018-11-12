@@ -2,9 +2,9 @@ class Config:
     '''
     configuration of the parent class
     '''
-    NEW_API_BASE_URL = 'https://newsapi.org/v2/everything?sources={}&language=en&apiKey={}'
-                        
+    NEW_API_BASE_URL = 'https://newsapi.org/v2/everything?q=apple&sortBy={}&apiKey={}'
 
+    
 class ProdConfig(Config):
     '''
     This is configuration child class

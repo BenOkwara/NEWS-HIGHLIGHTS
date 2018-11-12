@@ -18,13 +18,10 @@ def index():
     '''
 
     # Latest News Highlights
-    general_news = get_news('general')
-    print(general_news)
-    sports_news = get_news('sports')
-    print('sports_news')
-    technology_news = get_news('technology')
-    print(technology_news)
+    news_description = get_news('description')
+    publish = get_news('publishedAt')
+    news_content = get_news('relevant')
     title = 'Your news Highlights'
     message = 'News Break'
 
-    return render_template('index.html', message = message, title = title, general = general_news,sports = sports_news, technology = technology_news)
+    return render_template('index.html',title=title,description=news_description,publishedAt=publish,relevant=news_content)
