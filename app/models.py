@@ -11,9 +11,13 @@ class New:
         self.urlToImage = urlToImage
         self.publishedAt = publishedAt
         self.content = content
+
 class Source:
+    '''
+    New class to define New Objects
+    '''
     def __init__(self,name,description,category,url):
         self.name = name
-        self.description=description
-        self.category= category
-        self.url =url
+        self.description = description
+        self.category = category
+        self.url = url
