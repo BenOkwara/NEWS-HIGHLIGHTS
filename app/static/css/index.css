@@ -1,0 +1,9 @@
+.container{
+    background-image: url("https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fi2.cdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F140225123034-anderson-cooper-profile-full-169.jpg&f=1");
+}
+img{
+    border-radius: 15px;
+}
+li{
+    box-shadow: 3px -3px 5px grey;
+}

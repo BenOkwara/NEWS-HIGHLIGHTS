@@ -3,8 +3,30 @@
 {% macro displayNewList(new_list) %}
 
     {% for new in new_list %}
-        <li>{{ new.title }}</li>
+        <div class="">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 new-card">
+                <h4>{{new.title}}</h4>
+                <li class="text-center list-unstyled">
+                    <img src="{{new.urlToImage}}" alt="{{new.title}} urlToImage" class="img-responsive" height="100" width='200'>
+                    <p>{{new.description|truncate(100)}}</p>
+                    <a href="{{new.url}}">{{new.title|truncate(15)}}</a>
+                </li>
+            </div>
+        </div>
         
-    {% endfor %}
 
+    {% endfor %}
+    
+{% endmacro %}
+{% macro macroSource(sources)%}
+    {% for source in sources %}
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-auto">
+        <li class='list-unstyled'>
+            <p>{{source.name}}</p>
+            <p>{{source.description}}</p>
+            <p>{{source.category}}</p>
+            <a href="{{source.url}}">View Site</a>
+        </li><br>
+    </div>
+    {% endfor %}
 {% endmacro %}

@@ -1,18 +1,18 @@
 from flask import render_template
 from app import app
-from . request import get_news,get_new
+from .request import get_news,get_new
 
 # views
-@app.route('/new/<int:new_id>')
-def new(id):
+@app.route('/news')
+def new():
 
     '''
     View new page function that returns the new details page and its data
     '''
-    new = get_new(id)
-    title = f'{new.title}'
+    new = get_new()
+    # title = f'{new.}'
 
-    return render_template('new.html',title = title, new = new)
+    return render_template('new.html', new = new)
     
 @app.route('/')
 def index():

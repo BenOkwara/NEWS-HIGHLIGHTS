@@ -3,6 +3,7 @@ import urllib.request,json
 from .models import new
 
 New = new.New
+Source = new.Source
 
 # Getting api key
 api_key = app.config['NEW_API_KEY']
@@ -57,23 +58,44 @@ def process_articles(new_list):
 
     return new_articles
 
-def get_new(id):
-    get_news_details_url = base_url.format(id,api_key)
-    
-    with urllib.request.urlopen(get_news_details_url) as url:
+def get_new():
+    source_url='https://newsapi.org/v2/sources?&apiKey=8765aa287bb84962a62f1c1cfddef398'
+    # get_news_details_url = base_url.format(id,api_key)
+    new_object = None
+    with urllib.request.urlopen(source_url) as url:
         new_details_data = url.read()
         new_details_response = json.loads(new_details_data)
 
-        new_object = None
-        if new_details_response:
-            id = new_details_response.get('id')
-            title = new_details_response.get('original_title')
-            description = new_details_response.get('description')
-            url = new_details_response.get('url')
-            urlToImage = new_details_response.get('urlToImage')
-            publishedAt = new_details_response.get('publishedAt')
-            content = new_details_response.get('content')
+        
 
-            new_object = New(id,title,description,url,urlToImage,publishedAt,content)
+        if new_details_response['sources']:
+            
+            new_articles_list = new_details_response['sources']
+
+            new_object = process_sources(new_articles_list)
+
+    print(new_object)
+    return new_object
+
+def process_sources(new_source):
+    '''
+    Function that processes the new result and then transform them to a list of Objects
+
+    Args:
+        new_list: A list of dictionaries that contain new details
+
+    Returns:
+        new_articles: Displays a list of new objects
+    '''
+    new_object = []
+    for source in new_source:
+        name = source.get('name')
+        description = source.get('description')
+        url = source.get('url')
+        category = source.get('category')
+
+        
+        new_source = Source(name,description,category,url)
+        new_object.append(new_source)
 
     return new_object

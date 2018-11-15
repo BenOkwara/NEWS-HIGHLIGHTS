@@ -1,24 +1,46 @@
-<h1> {{ message }} </h1>
+<!-- <h1> {{ message }} </h1> -->
 {% extends 'base.html' %}
 {% import 'macros.html' as macro %}
 
+    <!-- Styles block -->
+    {% block styles %}
+        {{super() }}
+        <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    {% endblock %}
+
     <!-- Content block -->
     {% block content %}
+    <div class="container">
+        
+        <form>
+            <input type="text" name="new_query" placeholder="Find News" class="form-control">
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+
+    </div>
 
     <!--News Article-->
-    <h3>News Article</h3>
-    <ul>
-        {{macro.displayNewList(description)}}
-    </ul>
-    <!-- Date of publish -->
-    <h3>Published on: </h3>
-    <ul>
-        {{macro.displayNewList(publishedAt)}}
-    </ul>
-    <!-- Content -->
-    <h3>content </h3>
-    <ul>
-        {{macro.displayNewList(relevant)}}
-    </ul>
-    
+    <div class="container">
+        <h3>News Article</h3>
+        <div class="row">
+            <ul>
+                {{macro.displayNewList(description)}}
+            </ul>
+        </div>
+        <div class="row">
+          <!-- Date of publish -->
+            <h3>Published on: </h3>
+            <ul>
+                {{macro.displayNewList(publishedAt)}}
+            </ul>  
+        </div>
+        <div class="row">
+            <!-- Content -->
+            <h3>content </h3>
+            <ul>
+                {{macro.displayNewList(relevant)}}
+            </ul>
+        </div>
+    </div>
+
     {% endblock %}
