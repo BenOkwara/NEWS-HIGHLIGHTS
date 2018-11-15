@@ -7,16 +7,18 @@
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 new-card">
                 <h4>{{new.title}}</h4>
                 <li class="text-center list-unstyled">
-                    <img src="{{new.urlToImage}}" alt="{{new.title}} urlToImage" class="img-responsive" height="100" width='200'>
-                    <p>{{new.description|truncate(100)}}</p>
+                    <img src="{{new.urlToImage}}" alt="{{new.title}} urlToImage" class="img-responsive" height=50%>
+                    <p>{{new.description}}</p>
+                    <button type="button" class="btn btn-warning">
                     <a href="{{new.url}}">{{new.title|truncate(15)}}</a>
+                    </button>
                 </li>
             </div>
         </div>
-        
+
 
     {% endfor %}
-    
+
 {% endmacro %}
 {% macro macroSource(sources)%}
     {% for source in sources %}
