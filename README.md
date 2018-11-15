@@ -44,7 +44,7 @@ You need the following to work on the project:
 -virtualenv
 -A text  Editor`
 ## Link to Live Website
-https://news-highlight-flask.herokuapp.com/
+https://benew-high.herokuapp.com/
 
 ## Technologies Used
 * Python
