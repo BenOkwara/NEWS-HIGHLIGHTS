@@ -4,7 +4,7 @@ class Config:
     configuration of the parent class
     '''
     NEW_API_BASE_URL = 'https://newsapi.org/v2/everything?q=apple&sortBy={}&apiKey={}'
-    NEW_API_KEY = os.envrion.get('NEW_API_KEY')
+    NEW_API_KEY = os.environ.get('NEW_API_KEY')
 
 class ProdConfig(Config):
     '''

@@ -1,6 +1,5 @@
 import unittest
-from models import new
-New = new.New
+from app.models import New
 
 class NewTest(unittest.TestCase):
     '''
@@ -16,5 +15,5 @@ class NewTest(unittest.TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.new_new,New))
 
-if __name__ =='__main__':
-    unittest.main()
+# if __name__ =='__main__':
+#     unittest.main()

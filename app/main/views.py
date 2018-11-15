@@ -1,10 +1,12 @@
-from flask import render_template
-from app import app
-from .request import get_news,get_new
+from flask import render_template,request,redirect,url_for
+from . import main
+# from main import main
+from ..request import get_news,get_new
+from ..models import Review
 
 # views
-@app.route('/news')
-def new():
+@main.route('/news')
+url_for('.new'):
 
     '''
     View new page function that returns the new details page and its data
@@ -13,9 +15,9 @@ def new():
     # title = f'{new.}'
 
     return render_template('new.html', new = new)
-    
-@app.route('/')
-def index():
+
+@main.route('/')
+url_for('.index'):
     '''
     View root page function that returns the index page and its data
     '''

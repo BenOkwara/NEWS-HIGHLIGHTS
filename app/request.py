@@ -1,16 +1,19 @@
-from app import app
 import urllib.request,json
-from .models import new
+from .models import New
 
-New = new.New
-Source = new.Source
 
 # Getting api key
-api_key = app.config['NEW_API_KEY']
+api_key = None
 
 # Getting the new base url
-base_url = app.config["NEW_API_BASE_URL"]
+base_url = None
 # sources_url = app.config["NEWS_SOURCES_API"]
+
+def configure_request(app):
+    global api_key,base_url
+    api_key = app.config['NEW_API_KEY']
+    base_url = app.config['NEW_API_BASE_URL']
+    print(base_url.format("sortBy",api_key))
 
 
 def get_news(sortBy):
@@ -52,7 +55,6 @@ def process_articles(new_list):
         publishedAt = new_item.get('publishedAt')
         content = new_item.get('content')
 
-        
         new_object = New(id,title,description,url,urlToImage,publishedAt,content)
         new_articles.append(new_object)
 
@@ -66,14 +68,9 @@ def get_new():
         new_details_data = url.read()
         new_details_response = json.loads(new_details_data)
 
-        
-
         if new_details_response['sources']:
-            
             new_articles_list = new_details_response['sources']
-
             new_object = process_sources(new_articles_list)
-
     print(new_object)
     return new_object
 
@@ -94,7 +91,6 @@ def process_sources(new_source):
         url = source.get('url')
         category = source.get('category')
 
-        
         new_source = Source(name,description,category,url)
         new_object.append(new_source)
 
